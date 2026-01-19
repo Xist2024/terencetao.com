@@ -1,67 +1,133 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>免责声明 / Disclaimer</title>
+    <title>A Tribute to Terence Tao</title>
+    <style>
+        body {
+            font-family: "Times New Roman", "PingFang SC", "Microsoft YaHei", serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            color: #222;
+        }
+        /* 左上角下拉条 */
+        .lang-selector {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        select {
+            padding: 5px 10px;
+            font-family: inherit;
+            border: 1px solid #eee;
+            background: #fafafa;
+            color: #666;
+            cursor: pointer;
+            outline: none;
+            font-size: 0.9em;
+        }
+        .container {
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+        h1 { 
+            font-size: 1.8em;
+            margin-bottom: 40px; 
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #333;
+        }
+        nav a {
+            display: block;
+            margin: 12px 0;
+            padding: 15px;
+            text-decoration: none;
+            color: #444;
+            border: 1px solid #eee;
+            background: #fafafa;
+            transition: all 0.2s ease;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            border-color: #bbb;
+            background-color: #fefefe;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        footer {
+            position: absolute;
+            bottom: 30px;
+            padding: 0 20px;
+            font-size: 0.85em;
+            color: #888;
+            text-align: center;
+            line-height: 1.8;
+        }
+    </style>
 </head>
-<body style="background-color: white; color: black; font-family: sans-serif; text-align: center; padding-top: 50px; line-height: 1.6;">
+<body onload="initLanguage()">
 
-    <h1>免责声明/Disclaimer</h1>
-    <hr>
+    <div class="lang-selector">
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+        </select>
+    </div>
 
-    <p style="font-size: 1.5em; margin-bottom: 20px; font-weight: bold;">
-        这个网站和域名（terencetao.com）与陶哲轩（Terence Tao）教授没有任何关系、关联或背书。
-    </p> 
-    <p style="font-size: 1.1em; margin-bottom: 10px;">
-        本网站为个人持有，其上的任何信息（如果有的话）均不代表陶哲轩教授本人或加州大学洛杉矶分校（UCLA）的官方立场或观点。
-    </p>
-    <p style="font-size: 1.1em; margin-bottom: 30px;">
-        本网站不具备任何商业目的或盈利意图。
-    </p>
+    <div class="container">
+        <h1 id="mainTitle">A Tribute to Prof. Terence Tao</h1>
+        <nav id="navLinks">
+            <a href="https://www.math.ucla.edu/~tao/" target="_blank" id="link-cv">Official CV</a>
+            <a href="https://terrytao.wordpress.com/" target="_blank" id="link-blog">What's New (Blog)</a>
+            <a href="https://en.wikipedia.org/wiki/Terence_Tao" target="_blank" id="link-wiki">Wikipedia Entry</a>
+        </nav>
+    </div>
 
-    <p style="font-size: 1.2em;">
-        如果您想查看陶哲轩教授的官方信息、简历或最新研究，请访问他的加州大学洛杉矶分校（UCLA）官方主页：
-    </p>
+    <footer id="footerText"></footer>
 
-    <p style="font-size: 1.8em; font-weight: bold;">
-        <a href="https://www.math.ucla.edu/~tao/" style="color: blue; text-decoration: underline;">
-            https://www.math.ucla.edu/~tao/
-        </a>
-    </p>
+    <script>
+        const translations = {
+            en: {
+                title: "A Tribute to Prof. Terence Tao",
+                cv: "Official CV",
+                blog: "What's New (Blog)",
+                wiki: "Wikipedia Entry",
+                footer: `This website is not affiliated with Prof. Terence Tao or his institutions.<br>
+                         The domain is registered by a well-intentioned math enthusiast.`
+            },
+            zh: {
+                title: "致敬陶哲轩教授",
+                cv: "官方简历",
+                blog: "官方博客",
+                wiki: "维基百科",
+                footer: `本网页与陶哲轩教授本人及其附属机构无任何关联。<br>
+                         域名的注册人是一位善意的数学爱好者。`
+            }
+        };
 
-    <hr style="margin-top: 50px;">
+        function initLanguage() {
+            // 初始默认为英语
+            document.getElementById('languageSelect').value = 'en';
+            changeLanguage();
+        }
 
-    <p style="font-size: 1.5em; margin-bottom: 20px; font-weight: bold;">
-        This website and domain name (terencetao.com) are in no way affiliated with, associated with, or endorsed by Professor Terence Tao.
-    </p>
-    <p style="font-size: 1.1em; margin-bottom: 10px;">
-        This site is privately owned, and any content (if present) does not reflect the official views or position of Professor Tao or the University of California, Los Angeles (UCLA).
-    </p>
-    <p style="font-size: 1.1em; margin-bottom: 30px;">
-        This website has no commercial purpose or intent to generate profit.
-    </p>
-
-    <p style="font-size: 1.2em;">
-        If you are looking for Professor Terence Tao's official information, curriculum vitae, or latest research, please visit his official University of California, Los Angeles (UCLA) homepage:
-    </p>
-
-    <p style="font-size: 1.8em; font-weight: bold;">
-        <a href="https://www.math.ucla.edu/~tao/" style="color: blue; text-decoration: underline;">
-            https://www.math.ucla.edu/~tao/
-        </a>
-    </p>
-
-    <hr style="margin-top: 50px;">
-    
-    <p style="font-size: 1.1em; margin-bottom: 15px;">
-        如果您对购买此域名感兴趣，欢迎您前往 <a href="https://www.dynadot.com/zh/domain/whois?domain=terencetao.com" style="color: blue; text-decoration: underline;">Dynadot</a> 向我提出报价。
-    </p>
-
-    <p style="font-size: 1.1em; margin-bottom: 50px;">
-        If you are interested in acquiring this domain, you are welcome to submit an offer to me via <a href="https://www.dynadot.com/zh/domain/whois?domain=terencetao.com" style="color: blue; text-decoration: underline;">Dynadot</a>.
-    </p>
-
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            // 切换标题、链接和页脚
+            document.getElementById('mainTitle').innerText = translations[lang].title;
+            document.getElementById('link-cv').innerText = translations[lang].cv;
+            document.getElementById('link-blog').innerText = translations[lang].blog;
+            document.getElementById('link-wiki').innerText = translations[lang].wiki;
+            document.getElementById('footerText').innerHTML = translations[lang].footer;
+        }
+    </script>
 
 </body>
 </html>
