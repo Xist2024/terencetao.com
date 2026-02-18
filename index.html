@@ -77,7 +77,12 @@
     <div class="lang-selector">
         <select id="languageSelect" onchange="changeLanguage()">
             <option value="en">English</option>
-            <option value="zh">中文</option>
+            <option value="zh">简体中文</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
         </select>
     </div>
 
@@ -109,12 +114,54 @@
                 wiki: "维基百科",
                 footer: `本网页与陶哲轩教授本人及其附属机构无任何关联。<br>
                          域名的注册人是一位善意的数学爱好者。`
+            },
+            fr: {
+                title: "Hommage au Professeur Terence Tao",
+                cv: "CV Officiel",
+                blog: "Blog (Actualités)",
+                wiki: "Article Wikipédia",
+                footer: `Ce site n'est pas affilié au Professeur Terence Tao ou à ses institutions.<br>
+                         Le domaine est enregistré par un passionné de mathématiques bien intentionné.`
+            },
+            de: {
+                title: "Eine Hommage an Prof. Terence Tao",
+                cv: "Offizieller Lebenslauf",
+                blog: "Blog (Neuigkeiten)",
+                wiki: "Wikipedia-Eintrag",
+                footer: `Diese Website steht in keiner Verbindung zu Prof. Terence Tao oder seinen Institutionen.<br>
+                         Die Domain wurde von einem wohlmeinenden Mathematik-Enthusiasten registriert.`
+            },
+            es: {
+                title: "Un Homenaje al Prof. Terence Tao",
+                cv: "Currículum Oficial",
+                blog: "Blog (Novedades)",
+                wiki: "Entrada en Wikipedia",
+                footer: `Este sitio web no está afiliado al Prof. Terence Tao ni a sus instituciones.<br>
+                         El dominio está registrado por un entusiasta de las matemáticas bien intencionado.`
+            },
+            ja: {
+                title: "テレンス・タオ教授へのオマージュ",
+                cv: "公式履歴書",
+                blog: "公式ブログ (最新情報)",
+                wiki: "ウィキペディア",
+                footer: `このウェブサイトは、テレンス・タオ教授または彼の所属機関とは関係ありません。<br>
+                         このドメインは、善意のある数学愛好家によって登録されています。`
+            },
+            ko: {
+                title: "테렌스 타오 교수님께 바치는 헌사",
+                cv: "공식 이력서",
+                blog: "공식 블로그 (새 소식)",
+                wiki: "위키백과 항목",
+                footer: `이 웹사이트는 테렌스 타오 교수님 또는 그의 소속 기관과 관련이 없습니다.<br>
+                         이 도메인은 선의의 수학 애호가에 의해 등록되었습니다.`
             }
         };
 
         function initLanguage() {
-            // 初始默认为英语
-            document.getElementById('languageSelect').value = 'en';
+            // 尝试获取浏览器语言，如果没有匹配则默认为英语
+            const browserLang = navigator.language.split('-')[0];
+            const defaultLang = translations[browserLang] ? browserLang : 'en';
+            document.getElementById('languageSelect').value = defaultLang;
             changeLanguage();
         }
 
@@ -128,6 +175,5 @@
             document.getElementById('footerText').innerHTML = translations[lang].footer;
         }
     </script>
-
 </body>
 </html>
